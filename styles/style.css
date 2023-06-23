@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Roboto:wght@400;500&display=swap');
 
 :root{
-    --cor-fundo: #BAD7E9;
-    --cor-fuundoEscuro: #2B3467;
-    --cor-letra: #FCFFE7;
-    --cor-destaque: #EB455F;
-    --cor-hover: #2B3467;
-    --cor-letraEscura: #497174;
+    --cor-fundo: #F2935C;
+    --cor-fuundoEscuro: #F2D64B;
+    --cor-letra: #BF6550;
+    --cor-destaque: #211A26;
+    --cor-hover: #F2D64B;
+    --cor-letraEscura: #F2D64B;
 
     --cor-fundomobile:#F1F7B5;
     --cor-fundoescuromobile: #9EA1D4;
@@ -69,7 +69,7 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 50px;
 }
 
 .apresentacao__conteudo__titulo{
