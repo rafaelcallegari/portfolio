@@ -1,16 +1,600 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rafael Callegari — Desenvolvedor & IA</title>
-  <meta name="description" content="Portfólio de Rafael Callegari, desenvolvedor em São Paulo com foco em IA, automação e dados." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfólio de Rafael Callegari: desenvolvedor em São Paulo com foco em IA aplicada e automação.">
+<title>Rafael Callegari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: currículo interativo. Hero com nome gigante, depois blocos editoriais em coluna única larga, projetos em grade 2 col, trajetória em timeline vertical. */
+:root{
+  --bg:#F1F1EC; --surface:#E6E6DF; --fg:#131312; --muted:#5C5C55; --line:#CFCFC6;
+  --accent:#FFCF1A; --accent-ink:#131312; --accent-text:#7A5C00;
+  --chat:#1C1D21; --chat-2:#26282D; --chat-fg:#E4E4E0; --chat-muted:#9A9BA1; --hp:#E5484D; --ok:#46A758;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F0F0E; --surface:#191917; --fg:#EEEEE7; --muted:#9D9D94; --line:#2B2B28; --accent-text:#FFCF1A; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F0F0E; --surface:#191917; --fg:#EEEEE7; --muted:#9D9D94; --line:#2B2B28; --accent-text:#FFCF1A; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow b{color:var(--accent-text);font-weight:500}
+.display{font-family:var(--display);font-stretch:125%;font-weight:850;text-transform:uppercase;line-height:.9;letter-spacing:-.01em;text-wrap:balance;margin:0}
+section{padding-block:clamp(72px,11vw,140px);border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 32px;margin-bottom:clamp(36px,5vw,64px)}
+.sec-head h2{font-size:clamp(2.2rem,6vw,4.6rem)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.brand{font-family:var(--display);font-stretch:125%;font-weight:850;text-decoration:none;letter-spacing:.02em;font-size:1rem}
+.brand span{display:inline-block;width:10px;height:10px;background:var(--accent);border-radius:50%;margin-left:6px;vertical-align:1px}
+.nav-links{display:flex;gap:22px;margin-left:auto}
+.nav-links a{font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.nav-links a:hover{color:var(--fg)}
+.toggles{display:flex;gap:6px}
+.tbtn{font-family:var(--mono);font-size:.75rem;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:999px;height:32px;min-width:44px;padding:0 10px;cursor:pointer}
+.tbtn:hover{border-color:var(--fg)}
+@media (max-width:760px){.nav-links{display:none}.toggles{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,96px) clamp(56px,8vw,110px);border-top:0}
+.hero-grid{display:block}
+.hero h1{font-size:clamp(2.9rem,11vw,9.5rem)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ch{display:inline-block}
+.hero h1 .hl{color:var(--accent-text)}
+.role{margin:28px 0 0;font-family:var(--mono);font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-wrap:wrap;gap:8px 18px}
+.role span::before{content:"";display:inline-block;width:6px;height:6px;background:var(--accent);margin-right:8px;vertical-align:2px}
+.intro{max-width:52ch;color:var(--muted);font-size:1.08rem;margin:20px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--fg);font-size:.95rem;background:transparent;color:var(--fg);cursor:pointer;font-family:var(--body);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-bottom:22px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
+
+
+/* marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding-block:18px;background:var(--surface)}
+.track{display:flex;width:max-content;gap:0}
+.track ul{display:flex;list-style:none;margin:0;padding:0}
+.track li{font-family:var(--display);font-stretch:112%;font-weight:700;text-transform:uppercase;font-size:clamp(1.1rem,2.4vw,1.7rem);white-space:nowrap;padding-inline:22px;display:flex;align-items:center;gap:44px}
+.track li::after{content:"";width:9px;height:9px;background:var(--accent);transform:rotate(45deg);margin-right:-26px}
+
+/* sobre */
+.about-text{font-family:var(--display);font-stretch:100%;font-weight:600;font-size:clamp(1.5rem,3.3vw,2.6rem);line-height:1.2;letter-spacing:-.01em;max-width:30ch;margin:0;text-wrap:pretty}
+.about-text .w{display:inline-block}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--line);padding-top:28px}
+.stat .n{font-family:var(--display);font-stretch:125%;font-weight:850;font-size:clamp(2.4rem,5vw,4rem);line-height:1;font-variant-numeric:tabular-nums}
+.stat .n em{font-style:normal;color:var(--accent-text)}
+.stat p{margin:10px 0 0;color:var(--muted);font-size:.95rem;max-width:26ch}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
+
+/* projetos */
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(36px,5vw,56px);border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj.flip .proj-media{order:-1}
+.proj h3{font-size:clamp(2rem,4.6vw,3.4rem);margin-top:10px}
+.proj p{color:var(--muted);max-width:50ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:.74rem;border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--fg)}
+.proj-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.proj-links .btn{height:40px;font-size:.88rem;padding:0 16px}
+.facts{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px}
+.facts li{padding-left:18px;position:relative;font-size:.96rem}
+.facts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--accent-text)}
+@media (max-width:860px){.proj{grid-template-columns:1fr}.proj.flip .proj-media{order:0}}
+
+/* chat do Vitre */
+.chat{background:var(--chat);color:var(--chat-fg);border-radius:var(--radius);padding:18px;font-size:.9rem;line-height:1.45;box-shadow:0 24px 60px -30px rgba(0,0,0,.55);min-width:0}
+.chat-top{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;color:var(--chat-muted);padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--chat-2)}
+.chat-top b{color:var(--chat-fg);font-weight:500}
+.msg{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;margin-top:12px}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.8rem}
+.av.u{background:#5865F2;color:#fff}
+.av.b{background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-stretch:125%}
+.who{font-weight:600;font-size:.86rem}
+.who small{font-family:var(--mono);font-size:.64rem;background:#5865F2;color:#fff;border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:1px}
+.cmd{font-family:var(--mono);background:var(--chat-2);border-radius:4px;padding:1px 6px}
+.embed{margin-top:6px;background:var(--chat-2);border-left:4px solid var(--accent);border-radius:6px;padding:12px 14px}
+.embed.win{border-left-color:var(--ok)}
+.embed h4{margin:0;font-size:.95rem}
+.embed .sub{color:var(--chat-muted);font-size:.78rem;font-family:var(--mono)}
+.hpbar{height:10px;background:#3a3c42;border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.hpfill{height:100%;width:0%;background:var(--hp);border-radius:99px}
+.hptxt{font-family:var(--mono);font-size:.74rem;color:var(--chat-muted);font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.btns span{font-size:.76rem;background:#4E5058;border-radius:4px;padding:4px 10px}
+.btns span.p{background:#5865F2}
+.log{font-family:var(--mono);font-size:.76rem;color:var(--chat-muted);margin-top:4px}
+.log b{color:var(--chat-fg);font-weight:500}
+.log .dmg{color:#FF8A8D}
+.loot{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.loot span{font-family:var(--mono);font-size:.74rem;border:1px solid #4E5058;border-radius:4px;padding:2px 8px}
+.replay{margin-top:14px;background:transparent;border:1px solid #4E5058;color:var(--chat-fg);font-family:var(--mono);font-size:.72rem;border-radius:999px;padding:6px 12px;cursor:pointer}
+.replay:hover{border-color:var(--chat-fg)}
+
+/* cintel */
+.browser{border:1.5px solid var(--fg);border-radius:var(--radius);overflow:hidden;background:var(--surface);min-width:0}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1.5px solid var(--fg)}
+.bar i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--fg)}
+.bar span{margin-left:10px;font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.heat{display:block;width:100%;aspect-ratio:16/10;max-width:100%}
+.legend{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.legend .ramp{flex:1;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--line),var(--accent),var(--hp))}
+
+/* oráculo */
+.soon{border:1.5px dashed var(--line);border-radius:var(--radius);aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:24px;max-width:100%}
+.soon .display{font-size:clamp(3rem,9vw,6rem);color:transparent;-webkit-text-stroke:1.5px var(--muted)}
+.soon p{font-family:var(--mono);font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin:10px 0 0}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;border-radius:999px;padding:4px 10px;background:var(--accent);color:var(--accent-ink)}
+.pill.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+
+/* trajetória */
+.tl{position:relative;display:grid;gap:0;padding-left:30px}
+.tl::before,.tl .prog{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .prog{background:var(--accent);transform-origin:top;transform:scaleY(1)}
+.item{position:relative;border-bottom:1px solid var(--line)}
+.item::before{content:"";position:absolute;left:-30px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--fg)}
+.item.now::before{background:var(--accent);border-color:var(--accent)}
+.item summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:6px 24px;align-items:baseline;padding-block:22px}
+.item summary::-webkit-details-marker{display:none}
+.when{font-family:var(--mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.org{font-family:var(--display);font-stretch:112%;font-weight:800;text-transform:uppercase;font-size:clamp(1.25rem,2.6vw,1.9rem);line-height:1.05}
+.org small{display:block;font-family:var(--body);font-stretch:100%;text-transform:none;font-weight:500;font-size:.95rem;color:var(--muted);margin-top:6px;letter-spacing:0}
+.plus{width:32px;height:32px;border:1.5px solid var(--fg);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);transition:transform .3s,background .3s}
+.item[open] .plus{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.item .body{padding:0 0 24px 174px;color:var(--muted);max-width:calc(62ch + 174px)}
+.item .body p{margin:0}
+@media (max-width:700px){.item summary{grid-template-columns:minmax(0,1fr) auto}.when{grid-column:1/-1}.item .body{padding-left:0}}
+.subhead{margin:clamp(56px,7vw,88px) 0 10px}
+.edu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
+.edu article{border-top:2px solid var(--fg);padding-top:16px}
+.edu h4{margin:6px 0 4px;font-size:1.05rem}
+.edu p{margin:0;color:var(--muted);font-size:.93rem}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+
+/* contato */
+.contact h2{font-size:clamp(2.8rem,9vw,7.4rem)}
+.contact h2 .hl{background:var(--accent);color:var(--accent-ink);padding:0 .12em}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:40px}
+.mail code{font-family:var(--mono);font-size:clamp(1rem,2.4vw,1.4rem);border-bottom:2px solid var(--accent);padding-bottom:2px;user-select:all;overflow-wrap:anywhere}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">RC<span></span></a>
+    <nav class="nav-links" aria-label="Seções">
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+      <a href="#trajetoria" data-i18n="nav.path">Trajetória</a>
+      <a href="#contato" data-i18n="nav.contact">Contato</a>
+    </nav>
+    <div class="toggles">
+      <button class="tbtn" id="langBtn" type="button" aria-label="Mudar idioma">EN</button>
+      <button class="tbtn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="status"><i></i><span data-i18n="hero.status">Disponível para freelas e novas oportunidades</span></div>
+        <h1 class="display" aria-label="Rafael Callegari">
+          <span class="ln" data-split>Rafael</span>
+          <span class="ln hl" data-split>Callegari</span>
+        </h1>
+        <div class="role"><span data-i18n="hero.r1">Desenvolvedor</span><span data-i18n="hero.r2">IA aplicada</span><span data-i18n="hero.r3">Automação</span></div>
+        <p class="intro" data-i18n="hero.intro">Transformo processos repetitivos em automações e ideias em produtos no ar. Hoje estagiário em IA no Itaú e pós-graduando em Machine Learning na FIAP.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projetos" data-i18n="hero.cta1">Ver projetos</a>
+          <a class="btn" href="#contato" data-i18n="hero.cta2">Falar comigo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track" id="track">
+      <ul><li>Python</li><li>TypeScript</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Supabase</li><li>SQLite</li><li>discord.py</li><li>Power Automate</li><li>Stripe</li><li>Cloudflare R2</li><li>Vercel</li><li>AWS EC2</li><li>Linux</li><li>GSAP</li></ul>
+    </div>
+  </div>
+
+  <section id="sobre">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow"><b>/</b> <span data-i18n="nav.about">Sobre</span></span></div>
+      <p class="about-text" id="aboutText" data-i18n="about.text">Sou desenvolvedor em São Paulo e trabalho com automação e IA aplicada. No Itaú construo fluxos que tiram trabalho repetitivo do dia a dia dos times. Fora do expediente entrego sites de ponta a ponta para clientes e mantenho um RPG no Discord jogado por uma comunidade inteira.</p>
+      <div class="stats">
+        <div class="stat"><div class="n"><span class="count" data-to="4">4</span><em>+</em></div><p data-i18n="about.s1">anos trabalhando com tecnologia, de suporte a IA</p></div>
+        <div class="stat"><div class="n"><span class="count" data-to="180">180</span><em>k</em></div><p data-i18n="about.s2">arquivos de mapas servidos pelo Cloudflare R2 no Cintel</p></div>
+        <div class="stat"><div class="n"><span class="count" data-to="400">400</span><em>+</em></div><p data-i18n="about.s3">testes automatizados protegendo o Vitre RPG</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="display reveal" data-i18n="proj.title">Projetos</h2>
+        <span class="eyebrow"><b>03</b> <span data-i18n="proj.count">em destaque</span></span>
+      </div>
+
+      <article class="proj">
+        <div>
+          <span class="pill" data-i18n="proj.live">No ar</span>
+          <h3 class="display">Vitre RPG</h3>
+          <p data-i18n="vitre.desc">Bot de RPG para Discord onde grupos de amigos sobem uma torre de 15 andares. Combate por turnos com botões, classes, ofícios, guildas, raides e dano elemental, tudo persistido em banco e hospedado 24h.</p>
+          <ul class="facts">
+            <li data-i18n="vitre.f1">Mais de 100 commits e 400+ testes automatizados</li>
+            <li data-i18n="vitre.f2">Comandos por prefixo e por barra (slash commands)</li>
+            <li data-i18n="vitre.f3">Deploy contínuo na Discloud com backup do banco</li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>discord.py</li><li>SQLite</li><li>pytest</li><li>Discloud</li></ul>
+          <div class="proj-links"><a class="btn" href="https://github.com/rafaelcallegari/Vitre-rpg" target="_blank" rel="noopener" data-i18n="proj.code">Ver código</a></div>
+        </div>
+        <div class="proj-media">
+          <div class="chat" id="vitreChat">
+            <div class="chat-top"># <b>torre-andar-1</b></div>
+            <div class="msg">
+              <div class="av u">R</div>
+              <div><div class="who">rafa</div><span class="cmd">rpg chefe</span></div>
+            </div>
+            <div class="msg">
+              <div class="av b">V</div>
+              <div>
+                <div class="who">Vitre <small>BOT</small></div>
+                <div class="embed">
+                  <h4>⚔️ Vargash, o Kobold Coroado</h4>
+                  <div class="sub" data-i18n="chat.sub">Andar 1 · chefe · party de 2</div>
+                  <div class="hpbar"><div class="hpfill" id="hpFill"></div></div>
+                  <div class="hptxt" id="hpTxt">0 / 480 HP</div>
+                  <div class="btns"><span class="p" data-i18n="chat.b1">Atacar</span><span data-i18n="chat.b2">Skill</span><span data-i18n="chat.b3">Poção</span><span data-i18n="chat.b4">Fugir</span></div>
+                </div>
+                <div class="log"><b>rafa</b> <span data-i18n="chat.l1">usou Golpe Pesado</span> <span class="dmg">−168</span></div>
+                <div class="log"><b>aria</b> <span data-i18n="chat.l2">lançou Chama Arcana (fogo, forte)</span> <span class="dmg">−210</span></div>
+                <div class="log"><b>Vargash</b> <span data-i18n="chat.l3">carrega um golpe…</span></div>
+                <div class="log"><b>rafa</b> <span data-i18n="chat.l4">acertou um crítico</span> <span class="dmg">−102</span></div>
+              </div>
+            </div>
+            <div class="msg" id="winMsg">
+              <div class="av b">V</div>
+              <div>
+                <div class="embed win">
+                  <h4 data-i18n="chat.win">🏆 Vitória! Andar 2 liberado</h4>
+                  <div class="loot"><span>+120 XP</span><span data-i18n="chat.coins">+85 moedas</span><span>Coroa Velha</span><span data-i18n="chat.frag">Fragmento do Selo</span></div>
+                </div>
+              </div>
+            </div>
+            <button class="replay" id="replay" type="button" data-i18n="chat.replay">↻ rodar a luta de novo</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj flip">
+        <div>
+          <span class="pill" data-i18n="proj.client">Freela · entregue</span>
+          <h3 class="display">Cintel</h3>
+          <p data-i18n="cintel.desc">Plataforma web para uma empresa de inteligência imobiliária comercial. Fiz do zero, da interface ao go-live: área de cliente, pagamentos, e-mails transacionais e entrega de mapas de geomarketing.</p>
+          <ul class="facts">
+            <li data-i18n="cintel.f1">Pagamentos com Stripe e e-mails via Resend com domínio próprio</li>
+            <li data-i18n="cintel.f2">Mais de 180 mil mapas servidos pelo Cloudflare R2</li>
+            <li data-i18n="cintel.f3">Deploy na Vercel com DNS configurado na GoDaddy</li>
+          </ul>
+          <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>Stripe</li><li>Resend</li><li>Cloudflare R2</li><li>Vercel</li></ul>
+          <div class="proj-links">
+            <a class="btn primary" href="https://cintel-site.vercel.app/" target="_blank" rel="noopener" data-i18n="proj.visit">Visitar site</a>
+            <a class="btn" href="https://github.com/rafaelcallegari/cintel-site" target="_blank" rel="noopener" data-i18n="proj.code">Ver código</a>
+          </div>
+        </div>
+        <div class="proj-media">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>cintel-site.vercel.app/market/mapa-de-calor</span></div>
+            <canvas class="heat" id="heat" aria-label="Ilustração de um mapa de calor"></canvas>
+            <div class="legend"><span data-i18n="cintel.low">menos vocação</span><span class="ramp"></span><span data-i18n="cintel.high">mais vocação</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div>
+          <span class="pill ghost" data-i18n="proj.wip">Em desenvolvimento</span>
+          <h3 class="display">Oráculo</h3>
+          <!-- TODO: trocar pelas 2 frases do Rafael sobre o ORÁCULO -->
+          <p data-i18n="oraculo.desc">Meu principal projeto pessoal no momento. Os detalhes chegam aqui assim que ele estiver pronto para ser mostrado.</p>
+        </div>
+        <div class="proj-media">
+          <div class="soon"><div><div class="display">Oráculo</div><p data-i18n="oraculo.soon">em breve</p></div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="trajetoria">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="display reveal" data-i18n="path.title">Trajetória</h2>
+        <span class="eyebrow" data-i18n="path.hint">clique para abrir cada etapa</span>
+      </div>
+      <div class="tl" id="tl">
+        <span class="prog" id="tlProg" aria-hidden="true"></span>
+        <details class="item now" open>
+          <summary><span class="when" data-i18n="t1.when">12/2025 · atual</span><span class="org">Itaú Unibanco<small data-i18n="t1.role">Estagiário em IA e automação</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="body"><p data-i18n="t1.body">Crio e mantenho automações que otimizam o fluxo de trabalho da equipe, com foco crescente em integrar IA nos processos do dia a dia. Participo de projetos de IA aplicada ao ambiente corporativo e faço análise de dados.</p></div>
+        </details>
+        <details class="item">
+          <summary><span class="when">01/2025 · 11/2025</span><span class="org">Itaú Unibanco<small data-i18n="t2.role">Jovem aprendiz</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="body"><p data-i18n="t2.body">Análise de dados, criação e manutenção de automações para tarefas recorrentes, além da publicação e do controle de documentos internos.</p></div>
+        </details>
+        <details class="item">
+          <summary><span class="when">09/2024 · 12/2024</span><span class="org">PwC<small data-i18n="t3.role">Auxiliar técnico</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="body"><p data-i18n="t3.body">Tratamento e análise de dados, com planilhas estruturadas e visualizações que apoiavam a leitura e a tomada de decisão, sempre dentro do prazo.</p></div>
+        </details>
+        <details class="item">
+          <summary><span class="when">02/2024 · 04/2024</span><span class="org">Smart Staff<small data-i18n="t4.role">Desenvolvedor júnior</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="body"><p data-i18n="t4.body">Infraestrutura em nuvem na AWS (EC2), terminal Linux, HashiCorp Nomad e Vault, renovação de certificados SSL, administração de e-mail corporativo e suporte interno.</p></div>
+        </details>
+        <details class="item">
+          <summary><span class="when">09/2023 · 01/2024</span><span class="org">Smart Staff<small data-i18n="t5.role">Estagiário</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="body"><p data-i18n="t5.body">Relacionamento com clientes, análise de dados, configuração de software e suporte técnico.</p></div>
+        </details>
+        <details class="item">
+          <summary><span class="when">05/2022 · 08/2023</span><span class="org">Colégio Ateneu<small data-i18n="t6.role">Estagiário de suporte de TI</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="body"><p data-i18n="t6.body">Suporte técnico interno e externo, gerenciamento de redes, controle de acessos e administração básica do Google Admin.</p></div>
+        </details>
+      </div>
+
+      <h3 class="eyebrow subhead"><b>/</b> <span data-i18n="edu.title">Formação</span></h3>
+      <div class="edu">
+        <article><span class="when">03/2025 · 08/2026</span><h4 data-i18n="edu.1t">Pós-graduação em Machine Learning</h4><p>FIAP</p></article>
+        <article><span class="when">02/2022 · 12/2023</span><h4 data-i18n="edu.2t">Tecnólogo em Análise e Desenvolvimento de Sistemas</h4><p data-i18n="edu.2p">FATEC Antônio Russo · programa P-TECH</p></article>
+        <article><span class="when">2019 · 2021</span><h4 data-i18n="edu.3t">Técnico em Desenvolvimento de Sistemas</h4><p data-i18n="edu.3p">ETEC Jorge Street · P-TECH com a Volkswagen do Brasil</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div class="wrap">
+      <span class="eyebrow"><b>/</b> <span data-i18n="nav.contact">Contato</span></span>
+      <h2 class="display reveal" style="margin-top:18px" data-i18n-html="contact.title">Bora tirar sua ideia <span class="hl">do papel?</span></h2>
+      <div class="mail">
+        <code id="email">rafaelcallegarid@gmail.com</code>
+        <button class="btn primary" id="copyBtn" type="button" data-i18n="contact.copy">Copiar e-mail</button>
+      </div>
+      <div class="socials">
+        <a class="btn" href="https://www.linkedin.com/in/rafael-dos-santos-callegari-484b08212/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/rafaelcallegari" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="https://www.instagram.com/rafael_callegari_/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="year">2026</span> Rafael Callegari</span><span data-i18n="footer">São Paulo · feito à mão com GSAP</span></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  };
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- textos PT / EN ---------- */
+  var T = {
+    en: {
+      "nav.about":"About","nav.projects":"Projects","nav.path":"Career","nav.contact":"Contact",
+      "hero.status":"Open to freelance work and new roles","hero.r1":"Developer","hero.r2":"Applied AI","hero.r3":"Automation",
+      "hero.intro":"I turn repetitive processes into automations and ideas into shipped products. Currently an AI intern at Itaú and a postgraduate student in Machine Learning at FIAP.",
+      "hero.cta1":"See projects","hero.cta2":"Get in touch",
+      "about.text":"I'm a developer based in São Paulo working on automation and applied AI. At Itaú I build workflows that take repetitive work off teams' plates. After hours I ship websites end to end for clients and run a Discord RPG played by a whole community.",
+      "about.s1":"years working in tech, from IT support to AI","about.s2":"map files served from Cloudflare R2 for Cintel","about.s3":"automated tests guarding Vitre RPG",
+      "proj.title":"Projects","proj.count":"featured","proj.live":"Live","proj.client":"Freelance · shipped","proj.wip":"In progress","proj.code":"View code","proj.visit":"Visit site",
+      "vitre.desc":"A Discord RPG bot where groups of friends climb a 15-floor tower. Turn-based combat with buttons, classes, crafting jobs, guilds, raids and elemental damage, all persisted in a database and hosted 24/7.",
+      "vitre.f1":"100+ commits and 400+ automated tests","vitre.f2":"Prefix commands and slash commands","vitre.f3":"Deployed on Discloud with database backups",
+      "chat.sub":"Floor 1 · boss · party of 2","chat.b1":"Attack","chat.b2":"Skill","chat.b3":"Potion","chat.b4":"Flee",
+      "chat.l1":"used Heavy Strike","chat.l2":"cast Arcane Flame (fire, strong)","chat.l3":"is charging a blow…","chat.l4":"landed a critical hit",
+      "chat.win":"🏆 Victory! Floor 2 unlocked","chat.coins":"+85 coins","chat.frag":"Seal Fragment","chat.replay":"↻ replay the fight",
+      "cintel.desc":"A web platform for a commercial real estate intelligence company. Built from scratch, from interface to go-live: client area, payments, transactional email and delivery of geomarketing maps.",
+      "cintel.f1":"Stripe payments and Resend email on a custom domain","cintel.f2":"180k+ maps served from Cloudflare R2","cintel.f3":"Deployed on Vercel with DNS set up on GoDaddy",
+      "cintel.low":"lower fit","cintel.high":"higher fit",
+      "oraculo.desc":"My main personal project right now. Details will land here as soon as it's ready to be shown.","oraculo.soon":"coming soon",
+      "path.title":"Career","path.hint":"click each step to expand",
+      "t1.when":"12/2025 · now","t1.role":"AI & automation intern","t1.body":"I build and maintain automations that streamline the team's workflow, with a growing focus on bringing AI into day-to-day processes. I also work on applied AI projects in a corporate setting and on data analysis.",
+      "t2.role":"Apprentice","t2.body":"Data analysis, building and maintaining automations for recurring tasks, plus publishing and managing internal documents.",
+      "t3.role":"Technical assistant","t3.body":"Data cleaning and analysis, building structured spreadsheets and visualizations that supported reading and decision making, always on schedule.",
+      "t4.role":"Junior developer","t4.body":"Cloud infrastructure on AWS (EC2), Linux terminal, HashiCorp Nomad and Vault, SSL certificate renewals, corporate email administration and internal support.",
+      "t5.role":"Intern","t5.body":"Client relations, data analysis, software configuration and technical support.",
+      "t6.role":"IT support intern","t6.body":"Internal and external technical support, network management, access control and basic Google Admin administration.",
+      "edu.title":"Education","edu.1t":"Postgraduate degree in Machine Learning","edu.2t":"Associate degree in Systems Analysis and Development","edu.2p":"FATEC Antônio Russo · P-TECH program","edu.3t":"Technical diploma in Systems Development","edu.3p":"ETEC Jorge Street · P-TECH with Volkswagen do Brasil",
+      "contact.title":"Let's get your idea <span class=\"hl\">off the ground.</span>","contact.copy":"Copy email","contact.copied":"Copied!",
+      "footer":"São Paulo · handmade with GSAP"
+    },
+    pt: {}
+  };
+  // guarda o PT original que já está no HTML
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ T.pt[el.dataset.i18n] = T.pt[el.dataset.i18n] || el.textContent; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ T.pt[el.dataset.i18nHtml] = el.innerHTML; });
+  T.pt["contact.copied"] = "Copiado!";
+
+
+  var lang = store.get('lang') === 'en' ? 'en' : 'pt';
+  var langBtn = document.getElementById('langBtn');
+  function applyLang(){
+    root.lang = lang === 'en' ? 'en' : 'pt-BR';
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ var v = T[lang][el.dataset.i18n]; if (v) el.textContent = v; });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){ var v = T[lang][el.dataset.i18nHtml]; if (v) el.innerHTML = v; });
+    langBtn.textContent = lang === 'en' ? 'PT' : 'EN';
+    langBtn.setAttribute('aria-label', lang === 'en' ? 'Mudar para português' : 'Switch to English');
+    splitWords();
+  }
+  langBtn.addEventListener('click', function(){
+    lang = lang === 'en' ? 'pt' : 'en'; store.set('lang', lang); applyLang();
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  });
+
+  /* ---------- tema ---------- */
+  var saved = store.get('theme');
+  if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var isDark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = isDark ? 'light' : 'dark'; store.set('theme', root.dataset.theme);
+    drawHeat();
+  });
+
+  /* ---------- copiar e-mail ---------- */
+  var copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener('click', function(){
+    var email = document.getElementById('email');
+    function done(){ copyBtn.textContent = T[lang]["contact.copied"]; setTimeout(function(){ copyBtn.textContent = T[lang]["contact.copy"]; }, 1800); }
+    function fallback(){ var r = document.createRange(); r.selectNodeContents(email); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email.textContent).then(done, fallback);
+    } else fallback();
+  });
+
+  /* ---------- palavras do "sobre" ---------- */
+  var aboutText = document.getElementById('aboutText');
+  function splitWords(){
+    aboutText.innerHTML = aboutText.textContent.trim().split(/\s+/).map(function(w){ return '<span class="w">' + w + '</span>'; }).join(' ');
+  }
+
+  /* ---------- mapa de calor do Cintel ---------- */
+  var heat = document.getElementById('heat');
+  var seeds = [];
+  (function(){ var r = 7; for (var i=0;i<7;i++){ r = (r*9301+49297)%233280; var a=r/233280; r=(r*9301+49297)%233280; var b=r/233280; r=(r*9301+49297)%233280; seeds.push([a,b,.35+r/233280*.9]); } })();
+  function drawHeat(){
+    var cs = getComputedStyle(root);
+    var line = cs.getPropertyValue('--line').trim(), acc = cs.getPropertyValue('--accent').trim(), hot = cs.getPropertyValue('--hp').trim(), bg = cs.getPropertyValue('--surface').trim();
+    var w = heat.clientWidth, h = heat.clientHeight, dpr = window.devicePixelRatio || 1;
+    if (!w || !h) return;
+    heat.width = w*dpr; heat.height = h*dpr;
+    var ctx = heat.getContext('2d'); ctx.scale(dpr,dpr);
+    ctx.fillStyle = bg; ctx.fillRect(0,0,w,h);
+    var cell = Math.max(10, Math.round(w/34)), gap = 2;
+    for (var y=0; y<h; y+=cell){
+      for (var x=0; x<w; x+=cell){
+        var v = 0;
+        seeds.forEach(function(s){ var dx = x/w - s[0], dy = y/h - s[1]; v += s[2]*Math.exp(-(dx*dx+dy*dy)/0.02); });
+        v = Math.min(1, v);
+        ctx.globalAlpha = v < .15 ? .55 : .35 + v*.65;
+        ctx.fillStyle = v < .15 ? line : (v < .6 ? acc : hot);
+        ctx.fillRect(x, y, cell-gap, cell-gap);
+      }
+    }
+    ctx.globalAlpha = 1;
+    // pino do endereço analisado
+    var px = w*.62, py = h*.4;
+    ctx.fillStyle = cs.getPropertyValue('--fg').trim();
+    ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = cs.getPropertyValue('--fg').trim(); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px, py, 15, 0, Math.PI*2); ctx.stroke();
+  }
+  window.addEventListener('resize', drawHeat);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener && matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawHeat);
+
+  applyLang();
+  drawHeat();
+
+  if (!window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // quando algo entra na tela: dispara uma vez
+  function onView(el, fn, start){ ScrollTrigger.create({ trigger: el, start: start || 'top 82%', once: true, onEnter: fn }); }
+
+  /* marquee */
+  var track = document.getElementById('track');
+  track.appendChild(track.firstElementChild.cloneNode(true));
+  if (!reduce) gsap.to(track, { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
+
+  if (reduce) { ScrollTrigger.refresh(); return; }
+
+  /* hero: letras do nome */
+  document.querySelectorAll('[data-split]').forEach(function(ln){
+    ln.innerHTML = ln.textContent.split('').map(function(c){ return '<span class="ch">' + c + '</span>'; }).join('');
+  });
+  var intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  intro.from('.hero .ch', { yPercent: 115, duration: .9, stagger: .035 })
+       .from('.status, .role, .intro, .cta', { y: 20, opacity: 0, duration: .7, stagger: .08 }, '-=.5');
+
+  /* títulos de seção */
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    onView(el, function(){ gsap.fromTo(el, { yPercent: 30, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .9, ease: 'power4.out' }); });
+  });
+
+  /* sobre: palavras acendendo */
+  onView(aboutText, function(){
+    gsap.fromTo(aboutText.querySelectorAll('.w'), { opacity: .12 }, { opacity: 1, duration: .5, stagger: .03, ease: 'power1.out' });
+  }, 'top 75%');
+
+  /* contadores */
+  gsap.utils.toArray('.count').forEach(function(el){
+    onView(el, function(){
+      var o = { v: 0 }, to = +el.dataset.to;
+      gsap.to(o, { v: to, duration: 1.6, ease: 'power3.out', onUpdate: function(){ el.textContent = Math.round(o.v); } });
+    }, 'top 90%');
+  });
+
+  /* luta do Vitre */
+  var logs = gsap.utils.toArray('#vitreChat .log');
+  var fill = document.getElementById('hpFill'), hpTxt = document.getElementById('hpTxt');
+  var hp = { v: 480 };
+  function setHp(){ fill.style.width = (hp.v/480*100) + '%'; hpTxt.textContent = Math.round(hp.v) + ' / 480 HP'; }
+  var fight;
+  function playFight(){
+    if (fight) fight.kill();
+    hp.v = 480; setHp();
+    gsap.set(logs.concat(['#winMsg']), { opacity: 0, y: 8 });
+    fight = gsap.timeline({ defaults: { duration: .35, ease: 'power2.out' } });
+    var dmg = [168, 210, 0, 102];
+    var left = 480;
+    logs.forEach(function(l, i){
+      fight.to(l, { opacity: 1, y: 0 }, i ? '+=.55' : '+=.4');
+      if (dmg[i]) { left -= dmg[i]; fight.to(hp, { v: left, duration: .5, onUpdate: setHp }, '<'); }
+      else fight.to('.embed h4', { x: 3, duration: .06, repeat: 5, yoyo: true }, '<');
+    });
+    fight.to('#winMsg', { opacity: 1, y: 0, duration: .5, ease: 'back.out(2)' }, '+=.4');
+  }
+  onView('#vitreChat', playFight, 'top 70%');
+  document.getElementById('replay').addEventListener('click', playFight);
+
+  /* mapa: células aparecem */
+  onView('#heat', function(){ gsap.fromTo('#heat', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power3.inOut' }); }, 'top 75%');
+
+  /* trajetória: linha preenche com o scroll */
+  gsap.fromTo('#tlProg', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#tl', start: 'top 70%', end: 'bottom 60%', scrub: true } });
+
+  document.querySelectorAll('.item').forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (d.open) gsap.fromTo(d.querySelector('.body'), { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: .4, ease: 'power2.out' });
+      ScrollTrigger.refresh();
+    });
+  });
+})();
+</script>
 </body>
 </html>
